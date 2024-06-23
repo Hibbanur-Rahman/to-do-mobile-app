@@ -11,6 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../App'; // Import RootStackParamList type
+import variables from '../../environmentVariables';
 
 const Login = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -19,7 +20,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://192.168.0.1:8000/login', { email, password });
+      const response = await axios.post(`${variables.API_URL}/login`, { email, password });
       console.log(response.data)
       if (response.status === 200) {
         setEmail('');
