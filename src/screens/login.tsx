@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackParamList } from '../../App'; // Import RootStackParamList type
 import variables from '../../environmentVariables';
 
@@ -25,6 +26,7 @@ const Login = () => {
       if (response.status === 200) {
         setEmail('');
         setPassword('');
+        await AsyncStorage.setItem('userToken',response.data.data.token)
         navigation.navigate('Start');
 
       }
