@@ -77,7 +77,7 @@ const Login = () => {
       </View>
       <Text
         style={styles.signupText}
-        onPress={() => navigation.navigate('Signup')}
+        onPress={() => navigation.navigate('Register')}
       >
         Don't have an account? <Text style={{ fontWeight: 'bold' }}>Sign up</Text>
       </Text>

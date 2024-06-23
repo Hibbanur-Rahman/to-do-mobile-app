@@ -11,7 +11,7 @@ import Home from './src/screens/home';
 // Define the types for the navigation stack
 export type RootStackParamList = {
   Login: undefined;
-  Signup: undefined;
+  Register: undefined;
   Start: undefined;
   Home: undefined;
 };
@@ -25,7 +25,7 @@ const App = () => {
       <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
         <Stack.Navigator initialRouteName="Login">
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
-          <Stack.Screen name="Signup" component={Register} options={{ headerShown: false }}/>
+          <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>
           <Stack.Screen name="Start" component={StartScreen} options={{ headerShown: false }}/>
           <Stack.Screen name="Home" component={Home} /> 
         </Stack.Navigator>
