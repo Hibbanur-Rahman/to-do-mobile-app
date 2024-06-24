@@ -54,7 +54,7 @@ const App = () => {
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
           <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>
           <Stack.Screen name="Start" component={StartScreen} options={{ headerShown: false }}/>
-          <Stack.Screen name="Home" component={Home} /> 
+          <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/> 
         </Stack.Navigator>
       </SafeAreaView>
     </NavigationContainer>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {
   View,
@@ -7,28 +7,33 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App'; // Import RootStackParamList type
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../App'; // Import RootStackParamList type
 import variables from '../../environmentVariables';
 
 const Register = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [username,setUsername]=useState('');
+  const [username, setUsername] = useState('');
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post(`${variables.API_URL}/register`, { email, password,username });
-      console.log(response.data)
+      const response = await axios.post(`${variables.API_URL}/register`, {
+        email,
+        password,
+        username,
+      });
+      console.log(response.data);
       if (response.status === 200) {
         setEmail('');
         setPassword('');
         setUsername('');
         navigation.navigate('Login');
-
       }
     } catch (error) {
       console.log('Failed to login: ', error);
@@ -37,59 +42,70 @@ const Register = () => {
 
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.img}
-        source={require('../assets/images/login-img-1.png')}
-      />
-      <Text style={styles.title}>Welcome to Create account!</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setUsername}
-        value={username}
-        placeholder="Username"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={setEmail}
-        value={email}
-        placeholder="Email"
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={setPassword}
-        value={password}
-        placeholder="Password"
-        secureTextEntry
-      />
-      {/* <Text style={styles.forgotText}>Forgot password?</Text> */}
-      <TouchableOpacity style={styles.loginButton} onPress={handleRegister}>
-        <Text style={styles.loginButtonText}>Sign up</Text>
-      </TouchableOpacity>
-      <View style={styles.lineWrapper}>
-        <View style={styles.line}></View>
-        <Text style={styles.orText}>or</Text>
-        <View style={styles.line}></View>
-      </View>
-      <View style={styles.iconWrapper}>
-        <View style={styles.icon}>
-          <Image style={styles.iconImg} source={require('../assets/images/facebook-icon.png')} />
+      <ScrollView>
+        <Image
+          style={styles.img}
+          source={require('../assets/images/login-img-1.png')}
+        />
+        <Text style={styles.title}>Welcome to Create account!</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setUsername}
+          value={username}
+          placeholder="Username"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={setEmail}
+          value={email}
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={setPassword}
+          value={password}
+          placeholder="Password"
+          secureTextEntry
+        />
+        {/* <Text style={styles.forgotText}>Forgot password?</Text> */}
+        <TouchableOpacity style={styles.loginButton} onPress={handleRegister}>
+          <Text style={styles.loginButtonText}>Sign up</Text>
+        </TouchableOpacity>
+        <View style={styles.lineWrapper}>
+          <View style={styles.line}></View>
+          <Text style={styles.orText}>or</Text>
+          <View style={styles.line}></View>
         </View>
-        <View style={styles.icon}>
-          <Image style={styles.iconImg} source={require('../assets/images/google-icon.png')} />
+        <View style={styles.iconWrapper}>
+          <View style={styles.icon}>
+            <Image
+              style={styles.iconImg}
+              source={require('../assets/images/facebook-icon.png')}
+            />
+          </View>
+          <View style={styles.icon}>
+            <Image
+              style={styles.iconImg}
+              source={require('../assets/images/google-icon.png')}
+            />
+          </View>
+          <View style={styles.icon}>
+            <Image
+              style={styles.iconImg}
+              source={require('../assets/images/apple-icon.png')}
+            />
+          </View>
         </View>
-        <View style={styles.icon}>
-          <Image style={styles.iconImg} source={require('../assets/images/apple-icon.png')} />
-        </View>
-      </View>
-      <Text
-        style={styles.signupText}
-        onPress={() => navigation.navigate('Login')}
-      >
-        Already have an account? <Text style={{ fontWeight: 'bold' }}>Login</Text>
-      </Text>
+        <Text
+          style={styles.signupText}
+          onPress={() => navigation.navigate('Login')}>
+          Already have an account?{' '}
+          <Text style={{fontWeight: 'bold'}}>Login</Text>
+        </Text>
+      </ScrollView>
     </View>
   );
 };
