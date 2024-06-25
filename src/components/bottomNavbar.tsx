@@ -14,7 +14,7 @@ const BottomNavbar = () => {
       <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('Home')}>
         <IconFontAwesome name="house" size={25} color="#5f33e1" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('AddProject')}>
+      <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('Calendar')}>
         <IconFontAwesome name="calendar-days" size={25} color="#5f33e1" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('AddProject')}>
@@ -24,10 +24,10 @@ const BottomNavbar = () => {
           </View>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('AddProject')}>
+      <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('Notes')}>
         <IconMaterialCommunity name="file-document" size={28} color="#5f33e1" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('AddProject')}>
+      <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('Profile')}>
         <IconFontAwesome name="user-group" size={25} color="#5f33e1" />
       </TouchableOpacity>
     </View>

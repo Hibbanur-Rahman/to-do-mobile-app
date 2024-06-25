@@ -10,6 +10,9 @@ import Login from './src/screens/login';
 import Register from './src/screens/register';
 import Home from './src/screens/home';
 import AddProject from './src/screens/addProject';
+import Calendar from './src/screens/calendar';
+import Notes from './src/screens/notes';
+import Profile from './src/screens/profile';
 
 
 // Define the types for the navigation stack
@@ -19,6 +22,9 @@ export type RootStackParamList = {
   Start: undefined;
   Home: undefined;
   AddProject:undefined;
+  Notes:undefined;
+  Calendar:undefined;
+  Profile:undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -58,6 +64,9 @@ const App = () => {
           <Stack.Screen name="Start" component={StartScreen} options={{ headerShown: false }}/>
           <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
           <Stack.Screen name="AddProject" component={AddProject} options={{ headerShown: false }}/>
+          <Stack.Screen name="Calendar" component={Calendar} options={{ headerShown: false }}/>
+          <Stack.Screen name="Notes" component={Notes} options={{ headerShown: false }}/>
+          <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
 
         </Stack.Navigator>
       </SafeAreaView>

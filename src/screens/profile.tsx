@@ -17,7 +17,7 @@ import IconIntypo from 'react-native-vector-icons/Entypo';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome6';
 import BottomNavbar from "../components/bottomNavbar";
 
-const AddProject=()=>{
+const Profile=()=>{
     const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     return(
@@ -36,6 +36,8 @@ const AddProject=()=>{
             <Icon name="bell-fill" size={20} color="#000" />
 
             </View>
+
+            <Text>Profile</Text>
           </ScrollView>
           <BottomNavbar/>
         </ImageBackground>
@@ -64,4 +66,4 @@ const styles = StyleSheet.create({
    
   });
 
-export default AddProject;
+export default Profile;
