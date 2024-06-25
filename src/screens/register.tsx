@@ -41,8 +41,9 @@ const Register = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
+   
+      <ScrollView showsVerticalScrollIndicator={false} >
+         <View style={styles.container}>
         <Image
           style={styles.img}
           source={require('../assets/images/login-img-1.png')}
@@ -105,8 +106,9 @@ const Register = () => {
           Already have an account?{' '}
           <Text style={{fontWeight: 'bold'}}>Login</Text>
         </Text>
+        </View>
       </ScrollView>
-    </View>
+    
   );
 };
 

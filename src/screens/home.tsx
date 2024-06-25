@@ -14,7 +14,9 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import Icon from 'react-native-vector-icons/Octicons';
 import IconIntypo from 'react-native-vector-icons/Entypo';
+import IconFontAwesome from 'react-native-vector-icons/FontAwesome6';
 import CircularProgress from '../components/circularProgress';
+import BottomNavbar from '../components/bottomNavbar';
 
 const Home = () => {
   const navigation =
@@ -120,9 +122,10 @@ const Home = () => {
                       borderRadius: 6,
                       padding: 5,
                     }}>
-                    <Image
-                      style={{width: 15, height: 15}}
-                      source={require('../assets/images/briefcase.png')}
+                    <IconFontAwesome
+                      name="briefcase"
+                      size={15}
+                      color="#f478b8"
                     />
                   </View>
                 </View>
@@ -161,13 +164,14 @@ const Home = () => {
                   </Text>
                   <View
                     style={{
-                      backgroundColor: '#ffe9e1',
+                      backgroundColor: '#ede4ff',
                       borderRadius: 6,
                       padding: 5,
                     }}>
-                    <Image
-                      style={{width: 15, height: 15}}
-                      source={require('../assets/images/briefcase.png')}
+                    <IconFontAwesome
+                      name="house-chimney-user"
+                      size={15}
+                      color="#9260f4"
                     />
                   </View>
                 </View>
@@ -206,13 +210,14 @@ const Home = () => {
                   </Text>
                   <View
                     style={{
-                      backgroundColor: '#ffe9e1',
+                      backgroundColor: '#ffe6d4',
                       borderRadius: 6,
                       padding: 5,
                     }}>
-                    <Image
-                      style={{width: 15, height: 15}}
-                      source={require('../assets/images/briefcase.png')}
+                    <IconFontAwesome
+                      name="book-open"
+                      size={15}
+                      color="#ff9142"
                     />
                   </View>
                 </View>
@@ -249,15 +254,14 @@ const Home = () => {
                     backgroundColor: '#ffe9e1',
                     borderRadius: 10,
                     padding: 7,
-                    marginRight:10
+                    marginRight: 10,
                   }}>
-                  <Image
-                    style={{width: 30, height: 30}}
-                    source={require('../assets/images/briefcase.png')}
-                  />
+                  <IconFontAwesome name="briefcase" size={30} color="#f478b8" />
                 </View>
                 <View>
-                  <Text style={styles.taskGroupCardHeadText}>Office Project</Text>
+                  <Text style={styles.taskGroupCardHeadText}>
+                    Office Project
+                  </Text>
                   <Text style={styles.taskGroupCardParaText}>23 Tasks</Text>
                 </View>
               </View>
@@ -276,18 +280,17 @@ const Home = () => {
               <View style={{display: 'flex', flexDirection: 'row'}}>
                 <View
                   style={{
-                    backgroundColor: '#ffe9e1',
+                    backgroundColor: '#ede4ff',
                     borderRadius: 10,
                     padding: 7,
-                    marginRight:10
+                    marginRight: 10,
                   }}>
-                  <Image
-                    style={{width: 30, height: 30}}
-                    source={require('../assets/images/briefcase.png')}
-                  />
+                  <IconFontAwesome name="house-chimney-user" size={30} color="#9260f4" />
                 </View>
                 <View>
-                  <Text style={styles.taskGroupCardHeadText}>Personal Project</Text>
+                  <Text style={styles.taskGroupCardHeadText}>
+                    Personal Project
+                  </Text>
                   <Text style={styles.taskGroupCardParaText}>30 Tasks</Text>
                 </View>
               </View>
@@ -306,15 +309,12 @@ const Home = () => {
               <View style={{display: 'flex', flexDirection: 'row'}}>
                 <View
                   style={{
-                    backgroundColor: '#ffe9e1',
+                    backgroundColor: '#ffe6d4',
                     borderRadius: 10,
                     padding: 7,
-                    marginRight:10
+                    marginRight: 10,
                   }}>
-                  <Image
-                    style={{width: 30, height: 30}}
-                    source={require('../assets/images/briefcase.png')}
-                  />
+                  <IconFontAwesome name="book-open" size={30} color="#ff9142" />
                 </View>
                 <View>
                   <Text style={styles.taskGroupCardHeadText}>Daily Study</Text>
@@ -332,7 +332,7 @@ const Home = () => {
                 fontColor="#000"
               />
             </View>
-            
+
             <View style={[styles.taskGroupCard, {}]}>
               <View style={{display: 'flex', flexDirection: 'row'}}>
                 <View
@@ -340,15 +340,14 @@ const Home = () => {
                     backgroundColor: '#ffe9e1',
                     borderRadius: 10,
                     padding: 7,
-                    marginRight:10
+                    marginRight: 10,
                   }}>
-                  <Image
-                    style={{width: 30, height: 30}}
-                    source={require('../assets/images/briefcase.png')}
-                  />
+                  <IconFontAwesome name="briefcase" size={30} color="#f478b8" />
                 </View>
                 <View>
-                  <Text style={styles.taskGroupCardHeadText}>Office Project</Text>
+                  <Text style={styles.taskGroupCardHeadText}>
+                    Office Project
+                  </Text>
                   <Text style={styles.taskGroupCardParaText}>23 Tasks</Text>
                 </View>
               </View>
@@ -367,18 +366,17 @@ const Home = () => {
               <View style={{display: 'flex', flexDirection: 'row'}}>
                 <View
                   style={{
-                    backgroundColor: '#ffe9e1',
+                    backgroundColor: '#ede4ff',
                     borderRadius: 10,
                     padding: 7,
-                    marginRight:10
+                    marginRight: 10,
                   }}>
-                  <Image
-                    style={{width: 30, height: 30}}
-                    source={require('../assets/images/briefcase.png')}
-                  />
+                  <IconFontAwesome name="house-chimney-user" size={30} color="#9260f4" />
                 </View>
                 <View>
-                  <Text style={styles.taskGroupCardHeadText}>Personal Project</Text>
+                  <Text style={styles.taskGroupCardHeadText}>
+                    Personal Project
+                  </Text>
                   <Text style={styles.taskGroupCardParaText}>30 Tasks</Text>
                 </View>
               </View>
@@ -397,15 +395,12 @@ const Home = () => {
               <View style={{display: 'flex', flexDirection: 'row'}}>
                 <View
                   style={{
-                    backgroundColor: '#ffe9e1',
+                    backgroundColor: '#ffe6d4',
                     borderRadius: 10,
                     padding: 7,
-                    marginRight:10
+                    marginRight: 10,
                   }}>
-                  <Image
-                    style={{width: 30, height: 30}}
-                    source={require('../assets/images/briefcase.png')}
-                  />
+                  <IconFontAwesome name="book-open" size={30} color="#ff9142" />
                 </View>
                 <View>
                   <Text style={styles.taskGroupCardHeadText}>Daily Study</Text>
@@ -423,14 +418,13 @@ const Home = () => {
                 fontColor="#000"
               />
             </View>
-            
-           
           </View>
 
-          {/* <TouchableOpacity style={styles.loginButton} onPress={handleLogout}>
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogout}>
         <Text style={styles.loginButtonText}>Logout</Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
         </ScrollView>
+        <BottomNavbar/>
       </ImageBackground>
     </View>
   );
@@ -550,17 +544,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth: 0.2,
-    backgroundColor:'#fff',
-    marginBottom:20
+    backgroundColor: '#fff',
+    marginBottom: 20,
   },
-  taskGroupCardHeadText:{
+  taskGroupCardHeadText: {
     fontSize: 16,
-    color:'#000',
-    fontFamily:'LexendDeca-Medium'
+    color: '#000',
+    fontFamily: 'LexendDeca-Medium',
   },
-  taskGroupCardParaText:{
+  taskGroupCardParaText: {
     fontSize: 13,
-    fontFamily:'LexendDeca-Regular'
+    fontFamily: 'LexendDeca-Regular',
   },
   loginButton: {
     backgroundColor: '#5F33E1',
