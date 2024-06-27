@@ -47,6 +47,7 @@ const Login = () => {
         onChangeText={setEmail}
         value={email}
         placeholder="Email"
+        placeholderTextColor="#726e80" 
         keyboardType="email-address"
         autoCapitalize="none"
       />
@@ -55,6 +56,7 @@ const Login = () => {
         onChangeText={setPassword}
         value={password}
         placeholder="Password"
+        placeholderTextColor="#726e80" 
         secureTextEntry
       />
       <Text style={styles.forgotText}>Forgot password?</Text>

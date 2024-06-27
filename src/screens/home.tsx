@@ -113,7 +113,7 @@ const Home = () => {
                     marginBottom: 10,
                   }}>
                   <Text
-                    style={{fontFamily: 'LexendDeca-Regular', fontSize: 12}}>
+                    style={{fontFamily: 'LexendDeca-Regular', fontSize: 12,color:'#726e80'}}>
                     Office Project
                   </Text>
                   <View
@@ -159,7 +159,7 @@ const Home = () => {
                     marginBottom: 10,
                   }}>
                   <Text
-                    style={{fontFamily: 'LexendDeca-Regular', fontSize: 12}}>
+                    style={{fontFamily: 'LexendDeca-Regular', fontSize: 12,color:'#726e80'}}>
                     Personal Project
                   </Text>
                   <View
@@ -205,7 +205,7 @@ const Home = () => {
                     marginBottom: 10,
                   }}>
                   <Text
-                    style={{fontFamily: 'LexendDeca-Regular', fontSize: 12}}>
+                    style={{fontFamily: 'LexendDeca-Regular', fontSize: 12,color:'#726e80'}}>
                     Daily Study
                   </Text>
                   <View
@@ -285,7 +285,11 @@ const Home = () => {
                     padding: 7,
                     marginRight: 10,
                   }}>
-                  <IconFontAwesome name="house-chimney-user" size={30} color="#9260f4" />
+                  <IconFontAwesome
+                    name="house-chimney-user"
+                    size={30}
+                    color="#9260f4"
+                  />
                 </View>
                 <View>
                   <Text style={styles.taskGroupCardHeadText}>
@@ -371,7 +375,11 @@ const Home = () => {
                     padding: 7,
                     marginRight: 10,
                   }}>
-                  <IconFontAwesome name="house-chimney-user" size={30} color="#9260f4" />
+                  <IconFontAwesome
+                    name="house-chimney-user"
+                    size={30}
+                    color="#9260f4"
+                  />
                 </View>
                 <View>
                   <Text style={styles.taskGroupCardHeadText}>
@@ -421,10 +429,10 @@ const Home = () => {
           </View>
 
           <TouchableOpacity style={styles.loginButton} onPress={handleLogout}>
-        <Text style={styles.loginButtonText}>Logout</Text>
-      </TouchableOpacity>
+            <Text style={styles.loginButtonText}>Logout</Text>
+          </TouchableOpacity>
         </ScrollView>
-        <BottomNavbar/>
+        <BottomNavbar />
       </ImageBackground>
     </View>
   );

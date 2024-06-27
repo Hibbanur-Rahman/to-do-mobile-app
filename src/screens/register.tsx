@@ -54,6 +54,7 @@ const Register = () => {
           onChangeText={setUsername}
           value={username}
           placeholder="Username"
+          placeholderTextColor="#726e80" 
           autoCapitalize="none"
         />
         <TextInput
@@ -61,6 +62,7 @@ const Register = () => {
           onChangeText={setEmail}
           value={email}
           placeholder="Email"
+          placeholderTextColor="#726e80" 
           keyboardType="email-address"
           autoCapitalize="none"
         />
@@ -69,6 +71,7 @@ const Register = () => {
           onChangeText={setPassword}
           value={password}
           placeholder="Password"
+          placeholderTextColor="#726e80" 
           secureTextEntry
         />
         {/* <Text style={styles.forgotText}>Forgot password?</Text> */}
