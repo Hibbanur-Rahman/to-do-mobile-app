@@ -36,7 +36,7 @@ const Calendar=()=>{
             <Icon name="bell-fill" size={20} color="#000" />
 
             </View>
-            <Text>Calendar</Text>
+            <Text>Calendar screen</Text>
 
           </ScrollView>
           <BottomNavbar/>
