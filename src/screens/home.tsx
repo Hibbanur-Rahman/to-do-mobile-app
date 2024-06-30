@@ -22,14 +22,7 @@ const Home = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const handleLogout = async () => {
-    try {
-      await AsyncStorage.removeItem('userToken');
-      navigation.navigate('Login');
-    } catch (error) {
-      console.log('error to logout:', error);
-    }
-  };
+  
 
   return (
     <View style={styles.container}>
@@ -428,9 +421,7 @@ const Home = () => {
             </View>
           </View>
 
-          <TouchableOpacity style={styles.loginButton} onPress={handleLogout}>
-            <Text style={styles.loginButtonText}>Logout</Text>
-          </TouchableOpacity>
+          
         </ScrollView>
         <BottomNavbar />
       </ImageBackground>
