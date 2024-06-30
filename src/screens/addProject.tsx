@@ -4,29 +4,79 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Image,
   ImageBackground,
   ScrollView,
   TextInput,
+  Platform,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import Icon from 'react-native-vector-icons/Octicons';
-import IconIntypo from 'react-native-vector-icons/Entypo';
-import IconFontAwesome from 'react-native-vector-icons/FontAwesome6';
 import BottomNavbar from '../components/bottomNavbar';
 import ArrowLeftSvg from '../components/arrowLeftSvg';
 import ArrowDownSvg from '../components/arrowDownSvg';
-import {Dropdown} from 'react-native-element-dropdown';
 import DropdownComponent from '../components/dropDown';
+import CalendarIconSvg from '../components/calendarIconSvg';
+import DateTimePicker, {
+  DateTimePickerEvent,
+} from '@react-native-community/datetimepicker';
 
 const AddProject = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
+  const [chosenStartDate, setChosenStartDate] = useState(new Date());
+  const [showStartDatePicker, setShowStartDatePicker] = useState(false);
+  const [startDateHeadText, setStartDateHeadText] = useState('Select the date');
+  const [chosenEndDate, setChosenEndDate] = useState(new Date());
+  const [showEndDatePicker, setShowEndDatePicker] = useState(false);
+  const [endDateHeadText, setEndDateHeadText] = useState('Select the date');
+
+  const handleStartDateChange = (
+    event: DateTimePickerEvent,
+    selectedDate?: Date,
+  ) => {
+    const currentDate = selectedDate || chosenStartDate;
+    setShowStartDatePicker(Platform.OS === 'ios');
+    setChosenStartDate(currentDate);
+    setStartDateHeadText(
+      currentDate
+        .toLocaleDateString('en-GB', {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric',
+        })
+        .replace(/ /g, ', '),
+    );
+  };
+
+  const showStartDatePickerModal = () => {
+    setShowStartDatePicker(true);
+  };
+
+  const handleEndDateChange = (
+    event: DateTimePickerEvent,
+    selectedDate?: Date,
+  ) => {
+    const currentDate = selectedDate || chosenEndDate;
+    setShowEndDatePicker(Platform.OS === 'ios');
+    setChosenEndDate(currentDate);
+    setEndDateHeadText(
+      currentDate
+        .toLocaleDateString('en-GB', {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric',
+        })
+        .replace(/ /g, ', '),
+    );
+  };
+
+  const showEndDatePickerModal = () => {
+    setShowEndDatePicker(true);
+  };
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -37,8 +87,6 @@ const AddProject = () => {
           {/**============ navbar ============= */}
           <View style={styles.navbar}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              {/* <IconFontAwesome name="caret-left" size={25} color="#000" /> */}
-              {/* <Image style={{height:40,width:60}} source={require('../assets/images/arrow-right.svg')}/> */}
               <ArrowLeftSvg />
             </TouchableOpacity>
             <Text
@@ -78,21 +126,29 @@ const AddProject = () => {
               autoCorrect={true}
             />
           </View>
-          <View style={[styles.taskGroupCard,{display:'flex',flexDirection:'column',justifyContent: 'center', alignItems:'center'}]}>
+          <View
+            style={[
+              styles.taskGroupCard,
+              {
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              },
+            ]}>
             <Text style={[styles.taskGroupCardParaText, {}]}>Description</Text>
-            {/* <Text style={[styles.taskGroupCardHeadText, {fontSize:13,fontFamily: 'LexendDeca-Regular',}]}>
-              This application is designed for super shops. By using this
-              application they can enlist all their products in one place and
-              can deliver. Customers will get a one-stop solution for their
-              daily shopping.
-            </Text> */}
+
             <TextInput
               placeholder="write the description"
               value={projectDescription}
               onChangeText={setProjectDescription}
               style={[
                 styles.taskGroupTextArea,
-                {fontSize: 14, fontFamily: 'LexendDeca-Regular'},
+                {
+                  fontSize: 14,
+                  fontFamily: 'LexendDeca-Regular',
+                  textAlignVertical: 'top',
+                },
               ]}
               placeholderTextColor="#000"
               allowFontScaling={true}
@@ -101,7 +157,79 @@ const AddProject = () => {
               numberOfLines={4}
             />
           </View>
+          {/**============= project start date input ============ */}
+          <View
+            style={[
+              styles.taskGroupCard,
+              {display: 'flex', flexDirection: 'row'},
+            ]}>
+            <TouchableOpacity
+              onPress={showStartDatePickerModal}
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <CalendarIconSvg />
+              <View style={{marginStart: 15}}>
+                <Text style={[styles.taskGroupCardParaText, {}]}>
+                  Start Date
+                </Text>
+                <Text style={[styles.taskGroupCardHeadText, {}]}>
+                  {startDateHeadText}
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <ArrowDownSvg />
+          </View>
+          {showStartDatePicker && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={chosenStartDate}
+              mode="date"
+              is24Hour={true}
+              display="default"
+              onChange={handleStartDateChange}
+              minimumDate={new Date()} // Ensures only current or future dates can be selected
+            />
+          )}
+          {/**============= project end date input ============ */}
 
+          <View
+            style={[
+              styles.taskGroupCard,
+              {display: 'flex', flexDirection: 'row'},
+            ]}>
+            <TouchableOpacity
+              onPress={showEndDatePickerModal}
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <CalendarIconSvg />
+              <View style={{marginStart: 15}}>
+                <Text style={[styles.taskGroupCardParaText, {}]}>
+                  End Date
+                </Text>
+                <Text style={[styles.taskGroupCardHeadText, {}]}>
+                  {endDateHeadText}
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <ArrowDownSvg />
+          </View>
+          {showEndDatePicker && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={chosenEndDate}
+              mode="date"
+              is24Hour={true}
+              display="default"
+              onChange={handleEndDateChange}
+              minimumDate={new Date()} // Ensures only current or future dates can be selected
+            />
+          )}
           <View
             style={{
               width: '100%',
@@ -119,6 +247,7 @@ const AddProject = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -134,8 +263,6 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
-    // paddingHorizontal: 10,
-    // marginTop: 20,
   },
   addProjectButton: {
     backgroundColor: '#5F33E1',
@@ -184,7 +311,7 @@ const styles = StyleSheet.create({
     width: '100%',
     fontFamily: 'LexendDeca-Medium',
     fontSize: 16,
-    height:100
+    height: 100,
   },
   addProjectButtonText: {
     color: '#FFF',
