@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '90%',
     borderRadius: 10,
+    color:'#000'
   },
   forgotText: {
     textAlign: 'right',

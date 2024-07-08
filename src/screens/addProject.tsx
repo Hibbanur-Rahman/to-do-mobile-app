@@ -148,6 +148,7 @@ const AddProject = () => {
                   fontSize: 14,
                   fontFamily: 'LexendDeca-Regular',
                   textAlignVertical: 'top',
+                  color:'#000'
                 },
               ]}
               placeholderTextColor="#000"
@@ -306,6 +307,7 @@ const styles = StyleSheet.create({
     height: 40,
     fontSize: 14,
     fontFamily: 'LexendDeca-Regular',
+    color:'#000'
   },
   taskGroupTextArea: {
     width: '100%',

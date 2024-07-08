@@ -57,7 +57,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
-        <Stack.Navigator initialRouteName={isLoggedIn?'Start': 'Login'}>
+        <Stack.Navigator initialRouteName={isLoggedIn?'Home': 'Login'}>
 
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
           <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>

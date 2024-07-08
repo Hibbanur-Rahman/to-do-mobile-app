@@ -18,11 +18,11 @@ const BottomNavbar = () => {
         <IconFontAwesome name="calendar-days" size={25} color="#5f33e1" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('AddProject')}>
-        <View style={styles.wrapperIconParent}>
+        <TouchableOpacity style={styles.wrapperIconParent} onPress={()=>navigation.navigate('AddProject')}>
           <View style={styles.addIconWrapper}>
             <IconFontAwesome name="plus" size={25} color="#fff" />
           </View>
-        </View>
+        </TouchableOpacity>
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={()=>navigation.navigate('Notes')}>
         <IconMaterialCommunity name="file-document" size={28} color="#5f33e1" />

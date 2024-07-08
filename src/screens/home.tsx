@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -17,12 +17,33 @@ import IconIntypo from 'react-native-vector-icons/Entypo';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome6';
 import CircularProgress from '../components/circularProgress';
 import BottomNavbar from '../components/bottomNavbar';
+import { jwtDecode } from "jwt-decode";
 
 const Home = () => {
+  const [username, setUsername] = useState('');
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  
+    const handleProfileData = async () => {
+      const token = await AsyncStorage.getItem('userToken');
+      if (token) {
+        try {
+          // const decoded = decode(token) as DecodedToken;
+          const decoded = jwtDecode(token);
+          // const user=decode
+          console.log(decoded)
+          setUsername(decoded.user.username);
+        } catch (error) {
+          console.log('error decoding token:', error);
+        }
+      } else {
+        console.log('No token found');
+      }
+    };
+    
+    useEffect(() => {
+      handleProfileData();
+    }, []);
 
   return (
     <View style={styles.container}>
@@ -48,7 +69,7 @@ const Home = () => {
               </View>
               <View style={{marginLeft: 10}}>
                 <Text style={styles.navbarTextPara}>Hello!</Text>
-                <Text style={styles.navbarProfileName}>Hibbanur Rahman</Text>
+                <Text style={styles.navbarProfileName}>{username}</Text>
               </View>
             </View>
             <Icon name="bell-fill" size={20} color="#000" />
@@ -554,6 +575,7 @@ const styles = StyleSheet.create({
   taskGroupCardParaText: {
     fontSize: 13,
     fontFamily: 'LexendDeca-Regular',
+    color:'#858687'
   },
   loginButton: {
     backgroundColor: '#5F33E1',

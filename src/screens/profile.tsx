@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -17,18 +17,52 @@ import IconIntypo from 'react-native-vector-icons/Entypo';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome6';
 import BottomNavbar from '../components/bottomNavbar';
 import ArrowLeftSvg from '../components/arrowLeftSvg';
+import { jwtDecode } from "jwt-decode";
+
+
+interface DecodedToken {
+  user: {
+    username: string;
+  };
+}
 
 const Profile = () => {
+  const [username, setUsername] = useState('');
+  const [email,setEmail]=useState('');
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-    const handleLogout = async () => {
+  
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem('userToken');
+      navigation.navigate('Login');
+    } catch (error) {
+      console.log('error to logout:', error);
+    }
+  };
+  
+  const handleProfileData = async () => {
+    const token = await AsyncStorage.getItem('userToken');
+    if (token) {
       try {
-        await AsyncStorage.removeItem('userToken');
-        navigation.navigate('Login');
+        // const decoded = decode(token) as DecodedToken;
+        const decoded = jwtDecode(token);
+        // const user=decode
+        console.log(decoded)
+        setUsername(decoded.user.username);
+        setEmail(decoded.user.email);
       } catch (error) {
-        console.log('error to logout:', error);
+        console.log('error decoding token:', error);
       }
-    };
+    } else {
+      console.log('No token found');
+    }
+  };
+  
+  useEffect(() => {
+    handleProfileData();
+  }, []);
+  
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -64,9 +98,9 @@ const Profile = () => {
               style={styles.profileImg}
             />
             <Text style={[styles.headText, {marginTop: 15, marginBottom: 5}]}>
-              Hibbanur Rahman
+              {username}
             </Text>
-            <Text style={[styles.paraText, {}]}>hibbanrahmanhyt@gmail.com</Text>
+            <Text style={[styles.paraText, {}]}>{email}</Text>
           </View>
           <View
             style={{

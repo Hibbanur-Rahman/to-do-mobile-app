@@ -32,7 +32,7 @@ const Notes=()=>{
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <IconFontAwesome name="caret-left" size={25} color="#000" />
                 </TouchableOpacity>
-                <Text style={{fontFamily:'LexendDeca-Bold',color:'#000',fontSize:20}}>Add Project</Text>
+                <Text style={{fontFamily:'LexendDeca-Bold',color:'#000',fontSize:20}}>My Projects</Text>
             <Icon name="bell-fill" size={20} color="#000" />
 
             </View>
